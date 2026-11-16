@@ -4,517 +4,1147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b18">
-<title>VISTA | Intelligence Meets Learning</title>
+<meta name="theme-color" content="#080d1c">
+<title>VISTA | Learn Beyond Limits</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-:root{
- --bg:#070b18;
- --panel:#10182b;
- --blue:#55d5ff;
- --purple:#9a78ff;
- --white:#f4f6ff;
- --muted:#9caac4;
- --border:rgba(151,178,255,.16);
+:root {
+  --bg:#080d1c;
+  --panel:#111a2d;
+  --panel2:#151f35;
+  --blue:#55aaff;
+  --cyan:#51e5ef;
+  --purple:#a78bfa;
+  --text:#f4f7ff;
+  --muted:#9ba9c2;
+  --border:rgba(155,180,220,.15);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- background:var(--bg);
- color:var(--white);
- font-family:Inter,Arial,sans-serif;
- overflow-x:hidden;
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
 }
-a{color:inherit;text-decoration:none}
-button{font-family:inherit}
-.background{
- position:fixed;inset:0;z-index:-2;
- background:
- radial-gradient(ellipse at 10% 15%,#12315b 0%,transparent 38%),
- radial-gradient(ellipse at 90% 40%,#291448 0%,transparent 35%),
- #070b18;
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at 15% 10%,rgba(49,108,220,.17),transparent 38%),
+    radial-gradient(ellipse at 85% 35%,rgba(126,70,220,.13),transparent 35%),
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:auto,auto,42px 42px,42px 42px;
 }
-.grid-bg{
- position:fixed;inset:0;z-index:-1;pointer-events:none;
- opacity:.16;
- background-image:
- linear-gradient(rgba(110,160,255,.12) 1px,transparent 1px),
- linear-gradient(90deg,rgba(110,160,255,.12) 1px,transparent 1px);
- background-size:45px 45px;
- mask-image:linear-gradient(to bottom,black,transparent 85%);
-}
-nav{
- height:76px;padding:0 7%;
- display:flex;align-items:center;justify-content:space-between;
- position:sticky;top:0;z-index:20;
- background:#080d1de8;backdrop-filter:blur(20px);
- border-bottom:1px solid var(--border);
-}
-.brand{font-size:27px;font-weight:900;letter-spacing:3px}
-.brand span{color:var(--blue)}
-.navlinks{display:flex;gap:28px;align-items:center}
-.navlinks a{font-size:13px;color:#c4cde1;transition:.2s}
-.navlinks a:hover{color:var(--blue)}
-.nav-cta,.primary{
- border:0;border-radius:9px;padding:13px 20px;
- color:white;font-weight:700;cursor:pointer;
- background:linear-gradient(110deg,#238dff,#8054ff);
- box-shadow:0 0 25px #536cff40;
-}
-.menu{display:none;background:none;color:white;border:0;font-size:25px}
-.hero{
- min-height:690px;padding:90px 7% 75px;
- display:grid;grid-template-columns:1.15fr .85fr;
- align-items:center;gap:35px;
-}
-.pill{
- display:inline-flex;align-items:center;gap:9px;
- border:1px solid #4d80b7;padding:9px 14px;
- border-radius:40px;color:#a8ddff;font-size:11px;
- letter-spacing:1.5px;background:#12304a55;
-}
-.dot{width:7px;height:7px;background:#53e5bb;border-radius:50%;box-shadow:0 0 12px #53e5bb}
-.hero h1{
- font-size:clamp(44px,6.5vw,76px);
- line-height:1.07;letter-spacing:-3px;margin:28px 0;
-}
-.gradient{
- background:linear-gradient(100deg,#55d5ff,#9a78ff,#e59aff);
- background-clip:text;-webkit-background-clip:text;color:transparent;
-}
-.hero p{color:var(--muted);font-size:16px;line-height:1.9;max-width:550px}
-.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.secondary{
- padding:13px 20px;border:1px solid var(--border);
- background:#ffffff08;border-radius:9px;color:white;cursor:pointer;
-}
-.hero-note{margin-top:24px;font-size:11px;color:#788aa9}
-.visual{display:flex;align-items:center;justify-content:center;position:relative;min-height:390px}
-.orb{
- width:190px;height:190px;border-radius:50%;
- background:radial-gradient(circle at 35% 30%,#fff 0%,#73ddff 7%,#3978ff 28%,#6734bc 60%,#090d20 76%);
- box-shadow:0 0 35px #44caff90,0 0 100px #7951ff66,inset 0 0 30px white;
- animation:float 5s ease-in-out infinite;
- position:relative;
-}
-.orb:after{
- content:"";position:absolute;inset:-28px;
- border:1px solid #66caff77;border-radius:50%;
- box-shadow:0 0 35px #657eff33;
-}
-.orbit{
- position:absolute;width:330px;height:110px;
- border:1px solid #75aaff66;border-radius:50%;
- transform:rotate(-30deg);
- animation:spin 12s linear infinite;
-}
-.orbit.two{transform:rotate(55deg);animation-direction:reverse;width:300px}
-@keyframes float{50%{transform:translateY(-16px) scale(1.04)}}
-@keyframes spin{to{rotate:360deg}}
-.float-card{
- position:absolute;background:#101c35eF;border:1px solid #6383bc55;
- padding:13px 17px;border-radius:12px;font-size:12px;
- box-shadow:0 12px 40px #0008;backdrop-filter:blur(12px);
-}
-.fc1{top:32px;right:0}.fc2{bottom:48px;left:0}
-.section{padding:85px 7%}
-.heading{text-align:center;margin-bottom:42px}
-.heading h2{font-size:clamp(28px,4vw,42px);letter-spacing:-1px}
-.heading p{color:var(--muted);margin-top:12px;font-size:14px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
-.card{
- border:1px solid var(--border);background:linear-gradient(145deg,#151f36dd,#0c1428dd);
- border-radius:16px;padding:26px;transition:.3s;
-}
-.card:hover{transform:translateY(-6px);border-color:#54caff77;box-shadow:0 15px 40px #0005}
-.card-icon{
- width:49px;height:49px;border-radius:13px;
- display:grid;place-items:center;font-size:24px;
- background:linear-gradient(135deg,#2367a855,#7946bb55);
- border:1px solid #6baaff44;
-}
-.card h3{font-size:17px;margin:19px 0 9px}
-.card p{color:var(--muted);font-size:13px;line-height:1.8}
-.workspace{
- max-width:900px;margin:auto;padding:30px;
- border:1px solid #42618c66;border-radius:19px;
- background:linear-gradient(145deg,#142440e8,#0c1428f5);
- box-shadow:0 20px 80px #0005;
-}
-.workspace-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.workspace-top h3{font-size:20px}
-.status{font-size:11px;color:#63e6b7}
-.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:27px 0}
-.tab{
- padding:11px 16px;background:#ffffff08;border:1px solid var(--border);
- border-radius:9px;color:#b8c7df;cursor:pointer;font-size:13px;
-}
-.tab.active{background:#254c79;border-color:#56c9ff;color:white}
-.panel{display:none}
-.panel.active{display:block}
-label{display:block;color:#c9d6eb;font-size:13px;margin:15px 0 8px}
-input,textarea,select{
- width:100%;padding:14px;background:#080f20;
- border:1px solid #354c70;border-radius:9px;
- color:white;font:inherit;font-size:14px;
-}
-textarea{min-height:125px;resize:vertical}
-input:focus,textarea:focus,select:focus{outline:1px solid var(--blue)}
-.full{width:100%;margin-top:17px}
-.output{
- display:none;margin-top:20px;padding:19px;
- border:1px solid #52caff66;background:#091b32;border-radius:12px;
- color:#dcecff;line-height:1.8;white-space:pre-wrap;font-size:14px;
-}
-.preview{max-width:100%;max-height:280px;margin-top:15px;border-radius:12px;display:none}
-.mini-note{font-size:11px;color:var(--muted);margin-top:10px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.step{text-align:center;padding:23px 12px}
-.step-number{
- width:45px;height:45px;border:1px solid #5a9bdb;
- color:var(--blue);border-radius:50%;display:grid;place-items:center;
- margin:0 auto 15px;font-weight:800;
-}
-.quiz{max-width:620px;margin:auto}
-.quiz button{
- display:block;width:100%;padding:14px;margin-top:12px;
- border:1px solid var(--border);border-radius:9px;
- background:#182844;color:white;cursor:pointer;text-align:left;
-}
-.quiz button:hover{border-color:var(--blue);background:#203b65}
-#quizResult{margin-top:20px;color:var(--blue);font-size:14px}
-footer{
- border-top:1px solid var(--border);padding:45px 7%;
- text-align:center;background:#080d19;
-}
-footer p{color:var(--muted);font-size:12px;margin-top:12px}
-@media(max-width:800px){
- .hero{grid-template-columns:1fr;text-align:center;padding-top:65px}
- .hero p{margin:auto}
- .actions{justify-content:center}
- .visual{min-height:310px}
- .cards{grid-template-columns:1fr 1fr}
- .steps{grid-template-columns:1fr 1fr}
-}
-@media(max-width:520px){
- nav{padding:0 5%;height:68px}
- .menu{display:block}
- .navlinks{
-  display:none;position:absolute;top:68px;left:0;width:100%;
-  padding:20px;background:#0c1428;flex-direction:column;
+
+button,input,textarea,select { font:inherit; }
+
+button { cursor:pointer; }
+
+a { color:inherit; text-decoration:none; }
+
+.container { width:min(1120px,91%); margin:auto; }
+
+header {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(8,13,28,.85);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
- }
- .navlinks.show{display:flex}
- .nav-cta{display:none}
- .hero h1{letter-spacing:-2px}
- .cards{grid-template-columns:1fr}
- .section{padding:65px 5%}
- .workspace{padding:19px}
- .float-card{font-size:10px}
+}
+
+.nav {
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:25px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.logo-icon {
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  color:#071323;
+  background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));
+  box-shadow:0 0 25px rgba(85,170,255,.3);
+}
+
+.logo span { color:var(--cyan); }
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:27px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.nav-links a:hover { color:var(--cyan); }
+
+.nav-right { display:flex; align-items:center; gap:12px; }
+
+.language {
+  color:white;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+  outline:none;
+}
+
+.language option { background:#111a2d; }
+
+.menu-btn {
+  display:none;
+  background:var(--panel);
+  border:1px solid var(--border);
+  color:white;
+  border-radius:9px;
+  padding:9px 12px;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 19px;
+  border:0;
+  border-radius:10px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.btn-primary {
+  color:#061322;
+  background:linear-gradient(110deg,var(--cyan),var(--blue));
+  box-shadow:0 7px 25px rgba(70,175,255,.2);
+}
+
+.btn-primary:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(70,175,255,.35);
+}
+
+.btn-outline {
+  color:white;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+}
+
+.btn-outline:hover { border-color:var(--cyan); }
+
+.hero {
+  min-height:590px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:30px;
+  padding:75px 0;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 13px;
+  border:1px solid rgba(81,229,239,.25);
+  border-radius:30px;
+  background:rgba(81,229,239,.06);
+  color:var(--cyan);
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan);
+}
+
+h1,h2,h3 { font-family:'Space Grotesk',sans-serif; }
+
+.hero h1 {
+  margin:24px 0 18px;
+  font-size:clamp(42px,6vw,70px);
+  line-height:1.08;
+  letter-spacing:-2px;
+}
+
+.gradient-text {
+  background:linear-gradient(100deg,var(--cyan),var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  max-width:560px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.8;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:30px;
+}
+
+.hero-note {
+  margin-top:23px;
+  color:#8291aa;
+  font-size:12px;
+}
+
+.hero-visual {
+  min-height:390px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.orb {
+  width:min(290px,70vw);
+  aspect-ratio:1;
+  position:relative;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#c4fbff 0%,#54bafa 13%,#5266db 39%,#161b55 68%,#080d1c 75%);
+  box-shadow:0 0 60px rgba(65,148,255,.4),inset -20px -25px 55px rgba(0,0,0,.55);
+  animation:float 5s ease-in-out infinite;
+}
+
+.orb::before,.orb::after {
+  content:"";
+  position:absolute;
+  inset:-27px;
+  border:1px solid rgba(81,229,239,.45);
+  border-radius:50%;
+  transform:rotateX(68deg) rotateZ(-20deg);
+}
+
+.orb::after {
+  inset:-48px;
+  border-color:rgba(167,139,250,.4);
+  transform:rotateX(68deg) rotateZ(55deg);
+}
+
+.orb-core {
+  font-size:65px;
+  filter:drop-shadow(0 0 20px white);
+}
+
+.orb-label {
+  position:absolute;
+  bottom:22px;
+  padding:8px 14px;
+  border-radius:20px;
+  background:rgba(8,13,28,.8);
+  border:1px solid var(--border);
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-17px); }
+}
+
+.section { padding:75px 0; }
+
+.section-heading {
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-heading h2 {
+  font-size:clamp(29px,4vw,42px);
+  margin-bottom:12px;
+}
+
+.section-heading p {
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.feature-card {
+  padding:25px;
+  min-height:190px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(21,31,53,.9),rgba(12,19,35,.8));
+  transition:.25s;
+}
+
+.feature-card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(81,229,239,.5);
+}
+
+.feature-icon {
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  font-size:23px;
+  background:rgba(81,229,239,.1);
+  margin-bottom:19px;
+}
+
+.feature-card h3 { margin-bottom:9px; font-size:19px; }
+
+.feature-card p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.studio-wrap {
+  padding:27px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(17,26,45,.96),rgba(12,19,35,.96));
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.studio-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:24px;
+}
+
+.studio-top h3 { font-size:23px; }
+
+.demo-tag {
+  color:#f5ce79;
+  border:1px solid rgba(245,206,121,.25);
+  background:rgba(245,206,121,.07);
+  border-radius:20px;
+  padding:7px 11px;
+  font-size:11px;
+}
+
+.tabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-bottom:22px;
+}
+
+.tab {
+  padding:11px 17px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  color:var(--muted);
+  background:rgba(255,255,255,.025);
+}
+
+.tab.active {
+  color:var(--cyan);
+  border-color:var(--cyan);
+  background:rgba(81,229,239,.08);
+}
+
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+.field-label {
+  display:block;
+  margin-bottom:9px;
+  color:#cbd7ec;
+  font-size:13px;
+}
+
+textarea,.text-input {
+  width:100%;
+  color:white;
+  background:#0a1223;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:15px;
+  outline:none;
+  resize:vertical;
+}
+
+textarea { min-height:125px; }
+
+textarea:focus,.text-input:focus {
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(85,170,255,.1);
+}
+
+.studio-actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin-top:15px;
+}
+
+.result {
+  display:none;
+  margin-top:20px;
+  padding:18px;
+  border:1px solid rgba(81,229,239,.2);
+  border-radius:12px;
+  background:rgba(81,229,239,.045);
+  color:#cbd7ec;
+  line-height:1.7;
+  overflow-wrap:anywhere;
+}
+
+.result.show { display:block; }
+
+.result strong { color:var(--cyan); }
+
+.upload-box {
+  border:1px dashed rgba(81,229,239,.4);
+  border-radius:14px;
+  padding:30px 15px;
+  text-align:center;
+  background:rgba(81,229,239,.025);
+}
+
+.upload-box input { max-width:100%; margin-top:15px; }
+
+#imagePreview {
+  display:none;
+  max-width:100%;
+  max-height:300px;
+  margin:20px auto 0;
+  border-radius:12px;
+}
+
+.voice-box {
+  padding:28px;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(255,255,255,.02);
+}
+
+.mic {
+  width:75px;
+  height:75px;
+  border:0;
+  border-radius:50%;
+  color:#071323;
+  font-size:29px;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  box-shadow:0 0 30px rgba(81,229,239,.2);
+  margin:15px auto;
+}
+
+.mic.listening {
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse {
+  50% { box-shadow:0 0 0 15px rgba(81,229,239,.08),0 0 40px var(--cyan); }
+}
+
+.muted { color:var(--muted); font-size:13px; }
+
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.step {
+  padding:23px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(17,26,45,.65);
+}
+
+.step-number {
+  color:var(--cyan);
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+
+.step h3 { margin-bottom:9px; }
+
+.step p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.quiz-box {
+  max-width:720px;
+  margin:auto;
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:var(--panel);
+}
+
+.quiz-progress {
+  height:6px;
+  background:#26344c;
+  border-radius:10px;
+  margin:15px 0 23px;
+  overflow:hidden;
+}
+
+#progressBar {
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  transition:.3s;
+}
+
+#question { font-size:21px; margin-bottom:18px; }
+
+.answers { display:grid; gap:10px; }
+
+.answer {
+  padding:14px;
+  text-align:left;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#0c1528;
+}
+
+.answer:hover { border-color:var(--blue); }
+
+.answer.correct {
+  border-color:#47d69a;
+  background:rgba(71,214,154,.1);
+}
+
+.answer.wrong {
+  border-color:#ff7777;
+  background:rgba(255,119,119,.1);
+}
+
+.quiz-bottom {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:20px;
+}
+
+footer {
+  border-top:1px solid var(--border);
+  padding:30px 0;
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
+}
+
+footer strong { color:var(--cyan); }
+
+@media(max-width:800px) {
+  .hero { grid-template-columns:1fr; text-align:center; padding:65px 0 35px; }
+  .hero p { margin:auto; }
+  .hero-actions { justify-content:center; }
+  .hero-visual { min-height:320px; }
+  .features,.steps { grid-template-columns:1fr 1fr; }
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    padding:20px;
+    background:#0c1528;
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    align-items:stretch;
+    gap:20px;
+  }
+  .nav-links.open { display:flex; }
+  .menu-btn { display:block; }
+}
+
+@media(max-width:520px) {
+  .features,.steps { grid-template-columns:1fr; }
+  .studio-wrap { padding:17px; }
+  .nav { min-height:68px; }
+  .logo { font-size:21px; }
+  .hero h1 { letter-spacing:-1px; }
+  .section { padding:55px 0; }
 }
 </style>
 </head>
 
 <body>
-<div class="background"></div>
-<div class="grid-bg"></div>
 
-<nav>
- <a class="brand" href="#home">VISTA<span>✦</span></a>
- <div class="navlinks" id="navlinks">
-  <a href="#home">Home</a>
-  <a href="#features">Discover</a>
-  <a href="#learn">AI Workspace</a>
-  <a href="#how">How it works</a>
-  <a href="#quiz">Quiz</a>
- </div>
- <a href="#learn"><button class="nav-cta">Start Learning ↗</button></a>
- <button class="menu" onclick="toggleMenu()">☰</button>
-</nav>
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">
+      <div class="logo-icon">V</div>
+      VIS<span>TA</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#features" onclick="closeMenu()">Features</a>
+      <a href="#studio" onclick="closeMenu()">Learning Studio</a>
+      <a href="#quiz" onclick="closeMenu()">Quiz</a>
+    </nav>
+
+    <div class="nav-right">
+      <select class="language" id="language" aria-label="Choose language">
+        <option value="English">English</option>
+        <option value="Telugu">తెలుగు</option>
+        <option value="Hindi">हिन्दी</option>
+      </select>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
 
 <main>
-<section class="hero" id="home">
- <div>
-  <div class="pill"><span class="dot"></span> THE FUTURE OF SMART EDUCATION</div>
-  <h1>Learning is<br>evolving. <span class="gradient">Are you?</span></h1>
-  <p>
-   Discover a smarter way to understand the world.
-   Transform complex concepts into visual experiences
-   through text, images, voice and multilingual learning.
-  </p>
-  <div class="actions">
-   <a href="#learn"><button class="primary">Explore VISTA →</button></a>
-   <a href="#features"><button class="secondary">Discover Features</button></a>
+<section class="container hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> THE FUTURE OF LEARNING</div>
+
+    <h1>
+      See it.<br>
+      Understand it.<br>
+      <span class="gradient-text">Learn it.</span>
+    </h1>
+
+    <p>
+      Discover a smarter way to learn. VISTA transforms topics
+      into visual learning experiences with voice, camera,
+      text and interactive activities.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#studio" class="btn btn-primary">Start Learning ↗</a>
+      <a href="#features" class="btn btn-outline">Explore Features</a>
+    </div>
+
+    <div class="hero-note">✦ Visual learning · Multiple languages · Interactive quizzes</div>
   </div>
-  <div class="hero-note">✦ VISUAL INTELLIGENCE FOR SMART TEACHING & AWARENESS</div>
- </div>
- <div class="visual">
-  <div class="orbit"></div>
-  <div class="orbit two"></div>
-  <div class="orb"></div>
-  <div class="float-card fc1">✧ AI LEARNING CORE</div>
-  <div class="float-card fc2">◈ MULTILINGUAL LEARNING</div>
- </div>
+
+  <div class="hero-visual">
+    <div class="orb">
+      <div class="orb-core">✦</div>
+      <div class="orb-label">VISTA INTELLIGENCE</div>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="features">
- <div class="heading">
-  <h2>One Platform. <span class="gradient">Multiple Possibilities.</span></h2>
-  <p>Knowledge should be experienced, not just memorized.</p>
- </div>
- <div class="cards">
-  <div class="card">
-   <div class="card-icon">◈</div>
-   <h3>Visual Intelligence</h3>
-   <p>Use images and visual explanations to make difficult topics easier to understand.</p>
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">WHAT VISTA CAN DO</div>
+      <h2>One platform. <span class="gradient-text">Many ways to learn.</span></h2>
+      <p>Learn naturally using the tools you already have.</p>
+    </div>
+
+    <div class="features">
+      <article class="feature-card">
+        <div class="feature-icon">⌨️</div>
+        <h3>Text Learning</h3>
+        <p>Enter a topic or question and prepare it for an easy-to-understand explanation.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">📷</div>
+        <h3>Camera Learning</h3>
+        <p>Upload a picture of an object, diagram or learning material for visual analysis.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>Voice Learning</h3>
+        <p>Use your voice to ask questions instead of typing everything.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Multiple Languages</h3>
+        <p>Build learning experiences in Telugu, English, Hindi and more languages.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Smart Quizzes</h3>
+        <p>Test your knowledge through interactive questions and instant scores.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Visual Understanding</h3>
+        <p>Make difficult concepts easier to understand through visual explanations.</p>
+      </article>
+    </div>
   </div>
-  <div class="card">
-   <div class="card-icon">🎙</div>
-   <h3>Voice Interaction</h3>
-   <p>Ask questions naturally and explore learning through speech.</p>
-  </div>
-  <div class="card">
-   <div class="card-icon">文</div>
-   <h3>Multilingual Learning</h3>
-   <p>Make education accessible through different Indian languages.</p>
-  </div>
-  <div class="card">
-   <div class="card-icon">✦</div>
-   <h3>Smart Explanations</h3>
-   <p>Turn complicated subjects into simple, understandable learning experiences.</p>
-  </div>
-  <div class="card">
-   <div class="card-icon">⚡</div>
-   <h3>Interactive Quizzes</h3>
-   <p>Test your understanding through fun knowledge challenges.</p>
-  </div>
-  <div class="card">
-   <div class="card-icon">◎</div>
-   <h3>Learn Anywhere</h3>
-   <p>Explore learning from your phone, tablet or computer.</p>
-  </div>
- </div>
 </section>
 
-<section class="section" id="learn">
- <div class="heading">
-  <h2>Enter Your <span class="gradient">Learning Universe</span></h2>
-  <p>Your learning journey begins with one question.</p>
- </div>
+<section class="section" id="studio">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">YOUR LEARNING SPACE</div>
+      <h2>Welcome to the <span class="gradient-text">Learning Studio</span></h2>
+      <p>Choose how you want to explore a topic.</p>
+    </div>
 
- <div class="workspace">
-  <div class="workspace-top">
-   <h3>✦ VISTA Learning Studio</h3>
-   <span class="status">● PROTOTYPE ONLINE</span>
-  </div>
+    <div class="studio-wrap">
+      <div class="studio-top">
+        <h3>✦ VISTA Learning Assistant</h3>
+        <span class="demo-tag">FRONTEND DEMO</span>
+      </div>
 
-  <label>Choose your language</label>
-  <select id="language">
-   <option value="English">English</option>
-   <option value="Telugu">తెలుగు (Telugu)</option>
-   <option value="Hindi">हिन्दी (Hindi)</option>
-   <option value="Tamil">தமிழ் (Tamil)</option>
-   <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
-   <option value="Malayalam">മലയാളം (Malayalam)</option>
-   <option value="Bengali">বাংলা (Bengali)</option>
-  </select>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('text',this)">⌨️ Text</button>
+        <button class="tab" onclick="showTab('camera',this)">📷 Camera</button>
+        <button class="tab" onclick="showTab('voice',this)">🎙️ Voice</button>
+      </div>
 
-  <div class="tabs">
-   <button class="tab active" onclick="showTab('text',this)">✎ Text</button>
-   <button class="tab" onclick="showTab('camera',this)">▧ Camera</button>
-   <button class="tab" onclick="showTab('voice',this)">◉ Voice</button>
-  </div>
+      <div class="tab-panel active" id="text">
+        <label class="field-label" for="topic">What do you want to learn?</label>
+        <textarea id="topic" placeholder="Example: Explain how artificial intelligence works..."></textarea>
 
-  <div class="panel active" id="text">
-   <label>What do you want to understand?</label>
-   <textarea id="topic" placeholder="Example: Explain how artificial intelligence works..."></textarea>
-   <button class="primary full" onclick="textDemo()">Start Learning →</button>
-  </div>
+        <div class="studio-actions">
+          <button class="btn btn-primary" onclick="submitTopic()">Explore Topic ↗</button>
+          <span class="muted">Select your preferred language above.</span>
+        </div>
+        <div class="result" id="textResult" aria-live="polite"></div>
+      </div>
 
-  <div class="panel" id="camera">
-   <label>Upload a learning image</label>
-   <input type="file" id="imageInput" accept="image/*" capture="environment">
-   <img class="preview" id="preview" alt="Your selected image">
-   <p class="mini-note">Image preview works now. AI image analysis requires backend integration.</p>
-  </div>
+      <div class="tab-panel" id="camera">
+        <div class="upload-box">
+          <div style="font-size:35px">📷</div>
+          <h3 style="margin:10px 0">Upload a learning image</h3>
+          <p class="muted">Choose a photo, diagram or study material.</p>
+          <input type="file" id="imageInput" accept="image/*">
+          <img id="imagePreview" alt="Selected learning image preview">
+        </div>
+        <div class="studio-actions">
+          <button class="btn btn-primary" onclick="analyzeImage()">Prepare Image</button>
+        </div>
+        <div class="result" id="imageResult" aria-live="polite"></div>
+      </div>
 
-  <div class="panel" id="voice">
-   <label>Speak your question</label>
-   <button class="primary full" onclick="startVoice()">🎙 Activate Voice</button>
-   <p class="mini-note" id="voiceStatus">Ready to listen. Microphone permission may be required.</p>
+      <div class="tab-panel" id="voice">
+        <div class="voice-box">
+          <h3>Speak your question</h3>
+          <p class="muted" style="margin-top:8px">Tap the microphone and start speaking.</p>
+          <button class="mic" id="micButton" onclick="startVoice()">🎙️</button>
+          <p class="muted" id="voiceStatus">Microphone is ready.</p>
+        </div>
+        <label class="field-label" for="voiceText" style="margin-top:18px">Recognised speech</label>
+        <textarea id="voiceText" placeholder="Your spoken words will appear here..."></textarea>
+        <button class="btn btn-primary" style="margin-top:14px" onclick="useVoiceText()">Use This Question</button>
+        <div class="result" id="voiceResult" aria-live="polite"></div>
+      </div>
+    </div>
   </div>
-
-  <div class="output" id="output"></div>
- </div>
-</section>
-
-<section class="section" id="how">
- <div class="heading">
-  <h2>How VISTA <span class="gradient">Works</span></h2>
-  <p>A simple journey from curiosity to understanding.</p>
- </div>
- <div class="steps">
-  <div class="card step">
-   <div class="step-number">01</div>
-   <h3>Choose</h3>
-   <p>Choose text, camera or voice.</p>
-  </div>
-  <div class="card step">
-   <div class="step-number">02</div>
-   <h3>Explore</h3>
-   <p>Share the topic you want to understand.</p>
-  </div>
-  <div class="card step">
-   <div class="step-number">03</div>
-   <h3>Understand</h3>
-   <p>Get visual and multilingual explanations.</p>
-  </div>
-  <div class="card step">
-   <div class="step-number">04</div>
-   <h3>Master</h3>
-   <p>Practice through quizzes and games.</p>
-  </div>
- </div>
-</section>
-
-<section class="section" id="quiz">
- <div class="heading">
-  <h2>Challenge Your <span class="gradient">Brain</span></h2>
-  <p>Every question is an opportunity to learn.</p>
- </div>
- <div class="card quiz">
-  <div class="pill">KNOWLEDGE CHALLENGE · 01</div>
-  <h3 style="margin-top:20px">Which planet is known as the Red Planet?</h3>
-  <div id="answers">
-   <button onclick="check(this,false)">A. Earth</button>
-   <button onclick="check(this,true)">B. Mars</button>
-   <button onclick="check(this,false)">C. Venus</button>
-   <button onclick="check(this,false)">D. Jupiter</button>
-  </div>
-  <p id="quizResult"></p>
-  <button class="secondary" style="margin-top:18px" onclick="resetQuiz()">Try Again ↻</button>
- </div>
 </section>
 
 <section class="section">
- <div class="card" style="text-align:center;padding:48px 20px">
-  <div class="pill">A NEW WAY TO LEARN</div>
-  <h2 style="font-size:clamp(28px,5vw,43px);margin:22px 0">
-   Your curiosity.<br><span class="gradient">Our intelligence.</span>
-  </h2>
-  <p style="color:var(--muted)">See it. Understand it. Master it.</p>
-  <a href="#learn"><button class="primary" style="margin-top:25px">Begin Your Journey →</button></a>
- </div>
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">SIMPLE LEARNING PROCESS</div>
+      <h2>How <span class="gradient-text">VISTA works</span></h2>
+      <p>Three simple steps to begin your learning journey.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">01 — INPUT</div>
+        <h3>Choose your topic</h3>
+        <p>Type a question, speak it or upload an image.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02 — UNDERSTAND</div>
+        <h3>Explore the concept</h3>
+        <p>Get an explanation designed around your learning needs.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03 — PRACTICE</div>
+        <h3>Test your knowledge</h3>
+        <p>Play quizzes and check how much you have learned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="quiz">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">LEARN BY PLAYING</div>
+      <h2>VISTA <span class="gradient-text">Quick Quiz</span></h2>
+      <p>Try these questions and test your knowledge.</p>
+    </div>
+
+    <div class="quiz-box">
+      <div class="quiz-bottom">
+        <span class="muted" id="quizCount">Question 1 of 5</span>
+        <span class="muted" id="quizScore">Score: 0</span>
+      </div>
+      <div class="quiz-progress"><div id="progressBar"></div></div>
+      <h3 id="question"></h3>
+      <div class="answers" id="answers"></div>
+      <div class="quiz-bottom">
+        <span class="muted" id="quizFeedback" aria-live="polite">Choose your answer.</span>
+        <button class="btn btn-primary" id="nextButton" onclick="nextQuestion()" disabled>Next →</button>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
 
 <footer>
- <div class="brand">VISTA<span>✦</span></div>
- <p>Visual Intelligence for Smart Teaching & Awareness</p>
- <p>Making learning visual, interactive and accessible.</p>
- <p style="margin-top:25px">© 2026 VISTA. Built for the future of education.</p>
+  <div class="container">
+    <div class="logo" style="justify-content:center;margin-bottom:12px">
+      <div class="logo-icon">V</div> VIS<span>TA</span>
+    </div>
+    <p>Visual Intelligence for Smart Teaching & Awareness</p>
+    <p style="margin-top:9px">Learn without limits. Understand beyond words.</p>
+    <p style="margin-top:18px">© 2026 VISTA Project. All rights reserved.</p>
+  </div>
 </footer>
 
 <script>
-function toggleMenu(){
- document.getElementById("navlinks").classList.toggle("show");
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("open");
 }
-document.querySelectorAll(".navlinks a").forEach(a=>{
- a.addEventListener("click",()=>{
-  document.getElementById("navlinks").classList.remove("show");
- });
+
+function closeMenu() {
+  document.getElementById("navLinks").classList.remove("open");
+}
+
+function showTab(name,button) {
+  document.querySelectorAll(".tab-panel").forEach(panel => {
+    panel.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  document.getElementById(name).classList.add("active");
+  button.classList.add("active");
+}
+
+function showResult(id,message) {
+  const box = document.getElementById(id);
+  box.textContent = "";
+  box.textContent = message;
+  box.classList.add("show");
+}
+
+function submitTopic() {
+  const topic = document.getElementById("topic").value.trim();
+  const language = document.getElementById("language").value;
+
+  if (!topic) {
+    showResult("textResult","Please enter a topic or question first.");
+    return;
+  }
+
+  showResult(
+    "textResult",
+    "Your question: " + topic +
+    "\n\nSelected language: " + language +
+    "\n\nVISTA is ready to send this question to its AI learning service. The AI backend is not connected yet. Once Sarvam AI is integrated, this area will show the actual explanation."
+  );
+}
+
+const imageInput = document.getElementById("imageInput");
+
+imageInput.addEventListener("change",function() {
+  const file = this.files[0];
+  const preview = document.getElementById("imagePreview");
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    showResult("imageResult","Please select a valid image.");
+    this.value = "";
+    return;
+  }
+
+  if (file.size > 8 * 1024 * 1024) {
+    showResult("imageResult","Please select an image smaller than 8 MB.");
+    this.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    preview.src = event.target.result;
+    preview.style.display = "block";
+    showResult("imageResult","Image loaded successfully. This is a local preview only. AI image understanding will work after backend integration.");
+  };
+
+  reader.readAsDataURL(file);
 });
 
-function showTab(id,button){
- document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
- document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- button.classList.add("active");
- document.getElementById("output").style.display="none";
+function analyzeImage() {
+  if (!imageInput.files.length) {
+    showResult("imageResult","Please upload an image first.");
+    return;
+  }
+
+  showResult("imageResult","Your image is ready. Connect the VISTA backend to send it for AI image analysis.");
 }
 
-function showOutput(message){
- const out=document.getElementById("output");
- out.textContent=message;
- out.style.display="block";
- out.scrollIntoView({behavior:"smooth",block:"nearest"});
+let recognition = null;
+
+function startVoice() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    document.getElementById("voiceStatus").textContent =
+      "Voice recognition is not supported in this browser. Try a supported browser.";
+    return;
+  }
+
+  recognition = new SpeechRecognition();
+  recognition.lang = getSpeechLanguage();
+  recognition.interimResults = true;
+  recognition.continuous = false;
+
+  const mic = document.getElementById("micButton");
+  const status = document.getElementById("voiceStatus");
+  const output = document.getElementById("voiceText");
+
+  output.value = "";
+  mic.classList.add("listening");
+  status.textContent = "Listening... Speak now.";
+
+  recognition.onresult = function(event) {
+    let transcript = "";
+
+    for (let i = 0; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript;
+    }
+
+    output.value = transcript;
+  };
+
+  recognition.onerror = function(event) {
+    status.textContent = "Voice error: " + event.error;
+    mic.classList.remove("listening");
+  };
+
+  recognition.onend = function() {
+    mic.classList.remove("listening");
+    if (!output.value) {
+      status.textContent = "No speech detected. Tap the microphone to try again.";
+    } else {
+      status.textContent = "Speech captured successfully.";
+    }
+  };
+
+  try {
+    recognition.start();
+  } catch(error) {
+    status.textContent = "Could not start microphone. Try again.";
+    mic.classList.remove("listening");
+  }
 }
 
-function textDemo(){
- const topic=document.getElementById("topic").value.trim();
- const lang=document.getElementById("language").value;
- if(!topic){alert("Please enter a topic.");return;}
- showOutput(
-  "VISTA PROTOTYPE\n\n"+
-  "Your topic: "+topic+
-  "\nSelected language: "+lang+
-  "\n\nYour learning request has been captured successfully.\n\n"+
-  "AI explanation generation is not connected yet. Sarvam AI integration will power this feature in a future version."
- );
+function getSpeechLanguage() {
+  const selected = document.getElementById("language").value;
+
+  const codes = {
+    English:"en-IN",
+    Telugu:"te-IN",
+    Hindi:"hi-IN"
+  };
+
+  return codes[selected] || "en-IN";
 }
 
-document.getElementById("imageInput").addEventListener("change",function(e){
- const file=e.target.files[0];
- if(!file)return;
- if(!file.type.startsWith("image/")){alert("Please select an image.");return;}
- const preview=document.getElementById("preview");
- if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);
- const url=URL.createObjectURL(file);
- preview.src=url;
- preview.dataset.url=url;
- preview.style.display="block";
- showOutput("Image selected successfully: "+file.name+
- "\n\nImage preview is available. AI image recognition will be connected through the VISTA backend.");
-});
+function useVoiceText() {
+  const question = document.getElementById("voiceText").value.trim();
 
-function startVoice(){
- const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
- if(!Recognition){
-  document.getElementById("voiceStatus").textContent="Voice recognition is not supported in this browser. Try Chrome.";
-  return;
- }
- const lang=document.getElementById("language").value;
- const r=new Recognition();
- r.lang=lang==="Telugu"?"te-IN":
- lang==="Hindi"?"hi-IN":
- lang==="Tamil"?"ta-IN":
- lang==="Kannada"?"kn-IN":
- lang==="Malayalam"?"ml-IN":
- lang==="Bengali"?"bn-IN":"en-IN";
- r.onstart=()=>document.getElementById("voiceStatus").textContent="Listening... Speak now.";
- r.onresult=e=>{
-  const spoken=e.results[0][0].transcript;
-  document.getElementById("voiceStatus").textContent="Recognized: "+spoken;
-  document.getElementById("topic").value=spoken;
-  showOutput("Voice input captured:\n"+spoken+
-   "\n\nYour request is ready for future AI processing.");
- };
- r.onerror=()=>document.getElementById("voiceStatus").textContent="Could not recognize speech. Please try again.";
- r.onend=()=>{};
- r.start();
+  if (!question) {
+    showResult("voiceResult","Please speak or enter a question first.");
+    return;
+  }
+
+  showResult(
+    "voiceResult",
+    "Your voice question is ready: " + question +
+    "\n\nThe AI backend is not connected yet. After integration, VISTA will process this question."
+  );
 }
 
-function check(button,correct){
- const result=document.getElementById("quizResult");
- document.querySelectorAll("#answers button").forEach(b=>b.disabled=true);
- if(correct){
-  result.textContent="✓ Correct! Mars is called the Red Planet because of iron oxide on its surface.";
- }else{
-  result.textContent="Not quite! The correct answer is Mars.";
- }
+/* VISTA QUICK QUIZ */
+
+const quizData = [
+  {
+    question:"What does AI stand for?",
+    answers:["Automatic Internet","Artificial Intelligence","Advanced Information","Applied Internet"],
+    correct:1
+  },
+  {
+    question:"Which device is used to capture images?",
+    answers:["Speaker","Keyboard","Camera","Monitor"],
+    correct:2
+  },
+  {
+    question:"Which language is primarily used to structure web pages?",
+    answers:["HTML","Python","C++","Java"],
+    correct:0
+  },
+  {
+    question:"Which of these is an input device?",
+    answers:["Monitor","Printer","Speaker","Keyboard"],
+    correct:3
+  },
+  {
+    question:"What is the main purpose of a quiz?",
+    answers:["Delete information","Test knowledge","Turn off a computer","Store electricity"],
+    correct:1
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+  answered = false;
+
+  const data = quizData[currentQuestion];
+
+  document.getElementById("question").textContent = data.question;
+  document.getElementById("quizCount").textContent =
+    "Question " + (currentQuestion + 1) + " of " + quizData.length;
+
+  document.getElementById("quizScore").textContent = "Score: " + score;
+  document.getElementById("progressBar").style.width =
+    (currentQuestion / quizData.length * 100) + "%";
+
+  document.getElementById("quizFeedback").textContent = "Choose your answer.";
+
+  const next = document.getElementById("nextButton");
+  next.disabled = true;
+  next.textContent = currentQuestion === quizData.length - 1 ? "Finish" : "Next →";
+
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+
+  data.answers.forEach((answer,index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = answer;
+    button.onclick = () => chooseAnswer(index,button);
+    answers.appendChild(button);
+  });
 }
-function resetQuiz(){
- document.querySelectorAll("#answers button").forEach(b=>b.disabled=false);
- document.getElementById("quizResult").textContent="";
+
+function chooseAnswer(index,button) {
+  if (answered) return;
+
+  answered = true;
+
+  const correct = quizData[currentQuestion].correct;
+  const buttons = document.querySelectorAll(".answer");
+
+  buttons.forEach((item,i) => {
+    item.disabled = true;
+    if (i === correct) item.classList.add("correct");
+  });
+
+  if (index === correct) {
+    score++;
+    document.getElementById("quizFeedback").textContent = "Correct! Well done.";
+  } else {
+    button.classList.add("wrong");
+    document.getElementById("quizFeedback").textContent = "Not quite. The correct answer is highlighted.";
+  }
+
+  document.getElementById("quizScore").textContent = "Score: " + score;
+  document.getElementById("nextButton").disabled = false;
 }
+
+function nextQuestion() {
+  if (!answered) return;
+
+  currentQuestion++;
+
+  if (currentQuestion >= quizData.length) {
+    document.getElementById("question").textContent =
+      "Quiz completed! Your score: " + score + " / " + quizData.length;
+
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("quizCount").textContent = "Completed";
+    document.getElementById("progressBar").style.width = "100%";
+    document.getElementById("quizFeedback").textContent =
+      score === quizData.length ? "Perfect score!" : "Keep practising and try again.";
+
+    const next = document.getElementById("nextButton");
+    next.textContent = "Try Again";
+    next.disabled = false;
+    next.onclick = restartQuiz;
+    return;
+  }
+
+  loadQuestion();
+}
+
+function restartQuiz() {
+  currentQuestion = 0;
+  score = 0;
+
+  const next = document.getElementById("nextButton");
+  next.onclick = nextQuestion;
+
+  loadQuestion();
+}
+
+loadQuestion();
 </script>
+
 </body>
 </html>
-
-
-  
-  
-
-
