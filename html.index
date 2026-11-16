@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISTA | Smart Visual Learning</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #080d1c;
+  color: white;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: #10182b;
+  border-bottom: 1px solid #27334b;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: #8b9cff;
+}
+
+.logo span {
+  color: #fff;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.hero {
+  text-align: center;
+  padding: 90px 20px 65px;
+  background: radial-gradient(circle at top, #263d78, #080d1c 65%);
+}
+
+.tag {
+  color: #9baeff;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 65px);
+  line-height: 1.1;
+  margin: 22px 0;
+}
+
+.hero h1 span {
+  color: #91a3ff;
+}
+
+.hero p {
+  color: #c1c9dc;
+  max-width: 620px;
+  margin: auto;
+  font-size: 17px;
+}
+
+.btn {
+  display: inline-block;
+  background: #657cff;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  margin-top: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #8293ff;
+}
+
+section {
+  padding: 65px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  text-align: center;
+  color: #aab5cc;
+  margin-bottom: 35px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #141e34;
+  border: 1px solid #2b3b5b;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+}
+
+.card .emoji {
+  font-size: 38px;
+}
+
+.card h3 {
+  margin: 12px 0;
+}
+
+.card p {
+  color: #aab5cc;
+  font-size: 14px;
+}
+
+.card button, .card label {
+  cursor: pointer;
+}
+
+.learning {
+  background: #10182b;
+}
+
+textarea, select, input[type="file"] {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 9px;
+  background: #080d1c;
+  color: white;
+  border: 1px solid #455577;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+select {
+  cursor: pointer;
+}
+
+.result {
+  display: none;
+  background: #1a2945;
+  border-left: 4px solid #8293ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  white-space: pre-wrap;
+}
+
+#imagePreview {
+  max-width: 100%;
+  max-height: 250px;
+  margin-top: 15px;
+  border-radius: 10px;
+  display: none;
+}
+
+.quiz-box {
+  max-width: 650px;
+  margin: auto;
+  background: #141e34;
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #2b3b5b;
+}
+
+.quiz-box button {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px;
+  background: #253453;
+  color: white;
+  border: 1px solid #465b83;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.quiz-box button:hover {
+  background: #536bc4;
+}
+
+footer {
+  text-align: center;
+  background: #10182b;
+  padding: 30px;
+  color: #aab5cc;
+}
+
+@media(max-width:600px) {
+  header {
+    padding: 15px 5%;
+  }
+
+  nav a {
+    margin-left: 8px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding-top: 65px;
+  }
+
+  section {
+    padding: 50px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">VISTA<span>.</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#learn">Learn</a>
+    <a href="#features">Features</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div class="tag">VISUAL INTELLIGENCE FOR SMART LEARNING</div>
+
+  <h1>See It.<br><span>Understand It.</span><br>Master It.</h1>
+
+  <p>
+    Discover a new way of learning.
+    Understand difficult topics through visual learning,
+    voice, text and interactive experiences.
+  </p>
+
+  <a href="#learn" class="btn">Start Learning →</a>
+</div>
+
+<section id="features">
+  <h2 class="section-title">Learn Beyond Textbooks</h2>
+  <p class="section-desc">
+    Three ways to explore knowledge with VISTA.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">✍️</div>
+      <h3>Text Learning</h3>
+      <p>Enter a topic and explore its concepts.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">📷</div>
+      <h3>Camera Learning</h3>
+      <p>Upload a picture to start exploring it.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎙️</div>
+      <h3>Voice Learning</h3>
+      <p>Speak naturally and explore your questions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="learning" id="learn">
+  <h2 class="section-title">Your Learning Space</h2>
+  <p class="section-desc">
+    Choose how you want to learn today.
+  </p>
+
+  <div class="card">
+    <h3>🌍 Choose Your Language</h3>
+
+    <select id="language">
+      <option value="English">English</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Hindi">Hindi</option>
+    </select>
+
+    <h3 style="margin-top:25px">✍️ Ask with Text</h3>
+
+    <textarea id="topic"
+      placeholder="Example: Explain how the human heart works..."></textarea>
+
+    <button class="btn" onclick="learnTopic()">
+      Explore Topic →
+    </button>
+
+    <h3 style="margin-top:30px">📷 Learn with Camera</h3>
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <img id="imagePreview" alt="Selected learning image">
+
+    <h3 style="margin-top:25px">🎙️ Learn with Voice</h3>
+
+    <button class="btn" onclick="startVoice()">
+      Start Speaking 🎤
+    </button>
+
+    <p id="voiceStatus" style="margin-top:12px;color:#aab5cc">
+      Voice input is ready.
+    </p>
+
+    <div class="result" id="result"></div>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2 class="section-title">Test Your Knowledge</h2>
+  <p class="section-desc">
+    Learning becomes interesting when you play!
+  </p>
+
+  <div class="quiz-box">
+    <h3>🧠 Quick Science Quiz</h3>
+
+    <p style="margin-top:15px">
+      Which planet is known as the Red Planet?
+    </p>
+
+    <button onclick="checkAnswer(this, false)">Earth</button>
+    <button onclick="checkAnswer(this, true)">Mars</button>
+    <button onclick="checkAnswer(this, false)">Venus</button>
+    <button onclick="checkAnswer(this, false)">Jupiter</button>
+
+    <p id="quizResult" style="margin-top:15px"></p>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2>Knowledge Has No Language Barrier.</h2>
+    <p style="margin-top:12px">
+      VISTA — Making learning visual, simple and accessible.
+    </p>
+    <a href="#learn" class="btn">Explore VISTA</a>
+  </div>
+</section>
+
+<footer>
+  <h2 class="logo">VISTA.</h2>
+  <p>Visual Intelligence for Smart Teaching & Awareness</p>
+  <p style="margin-top:12px">© 2026 VISTA. All rights reserved.</p>
+</footer>
+
+<script>
+function learnTopic() {
+  const topic = document.getElementById("topic").value.trim();
+  const language = document.getElementById("language").value;
+  const result = document.getElementById("result");
+
+  if (!topic) {
+    alert("Please enter a topic first!");
+    return;
+  }
+
+  result.style.display = "block";
+  result.textContent =
+    "Your topic: " + topic +
+    "\nSelected language: " + language +
+    "\n\nThis is the VISTA learning demo. AI explanations will be available after Sarvam AI integration.";
+
+  result.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+document.getElementById("imageInput").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image.");
+    return;
+  }
+
+  const preview = document.getElementById("imagePreview");
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+  result.textContent =
+    "Image selected: " + file.name +
+    "\nImage preview is ready. AI image understanding will be added later.";
+});
+
+function startVoice() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Voice recognition is not supported in this browser. Try Chrome.");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+  const language = document.getElementById("language").value;
+
+  recognition.lang =
+    language === "Telugu" ? "te-IN" :
+    language === "Hindi" ? "hi-IN" : "en-IN";
+
+  recognition.onstart = function() {
+    document.getElementById("voiceStatus").textContent =
+      "Listening... Speak now!";
+  };
+
+  recognition.onresult = function(event) {
+    const speech = event.results[0][0].transcript;
+    document.getElementById("topic").value = speech;
+    document.getElementById("voiceStatus").textContent =
+      "You said: " + speech;
+  };
+
+  recognition.onerror = function() {
+    document.getElementById("voiceStatus").textContent =
+      "Voice recognition failed. Please try again.";
+  };
+
+  recognition.start();
+}
+
+function checkAnswer(button, correct) {
+  const output = document.getElementById("quizResult");
+
+  if (correct) {
+    output.textContent = "Correct! Mars is the Red Planet. 🎉";
+  } else {
+    output.textContent = "Not quite! Try again.";
+  }
+}
+</script>
+
+</body>
+</html>
